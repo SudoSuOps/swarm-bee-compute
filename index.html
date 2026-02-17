@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sovereign Compute Infrastructure — Swarm &amp; Bee</title>
+  <meta name="description" content="324 GPUs. 18TB VRAM. 100 edge nodes. Sovereign compute infrastructure for AI training, fine-tuning, and inference. Your data never leaves your rack.">
+  <meta property="og:title" content="Sovereign Compute — Swarm & Bee">
+  <meta property="og:description" content="324 GPUs. 18TB VRAM. 100 edge nodes. Sovereign single-tenant compute infrastructure.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://compute.swarmandbee.com">
+  <link rel="icon" type="image/svg+xml" href="https://swarmandbee.com/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #080808;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #aaa;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: rgba(200,175,100,0.15); }
+
+    a { color: #aaa; text-decoration: none; transition: color 0.3s; }
+    a:hover { color: #fff; }
+
+    .wrapper { max-width: 800px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+
+    /* ── Header ── */
+    .header { margin-bottom: 5rem; }
+
+    .firm {
+      font-size: 0.65rem; font-weight: 400; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #777; margin-bottom: 2.4rem;
+    }
+    .firm a { color: #555; }
+    .firm a:hover { color: #aaa; }
+
+    .hero-title {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: #f0f0f0;
+      margin-bottom: 1.4rem;
+      line-height: 1.3;
+    }
+
+    .hero-title .gold { color: #c8af64; }
+
+    .hero-sub {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: #bbb;
+      max-width: 600px;
+      line-height: 1.9;
+    }
+
+    /* ── Dividers ── */
+    .rule { width: 40px; height: 1px; background: #222; margin: 3.5rem 0; }
+    .rule-full { width: 100%; height: 1px; background: #151515; margin: 2.5rem 0; }
+
+    /* ── Section Labels ── */
+    .section-label {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.25em;
+      text-transform: uppercase; color: #888; margin-bottom: 2rem;
+    }
+
+    /* ── Hero Numbers ── */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: #151515;
+      border: 1px solid #151515;
+      margin-top: 3rem;
+    }
+
+    .hero-stat {
+      background: #0a0a0a;
+      padding: 1.8rem 1rem;
+      text-align: center;
+    }
+
+    .hero-num {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 300;
+      color: #c8af64;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-label {
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    /* ── Fleet Tiers ── */
+    .tier-card {
+      border: 1px solid #151515;
+      margin-bottom: 2rem;
+    }
+
+    .tier-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 1.6rem;
+      border-bottom: 1px solid #151515;
+      background: #0c0c0c;
+    }
+
+    .tier-name {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #f0f0f0;
+      letter-spacing: 0.02em;
+    }
+
+    .tier-badge {
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid #2a2a1a;
+      color: #c8af64;
+    }
+
+    .tier-body { padding: 1.4rem 1.6rem; }
+
+    .tier-specs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-bottom: 1rem;
+    }
+
+    .tier-spec {
+      padding: 0.6rem 0;
+    }
+
+    .tier-spec-value {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #ddd;
+      margin-bottom: 0.2rem;
+    }
+
+    .tier-spec-label {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #777;
+    }
+
+    .tier-desc {
+      font-size: 0.78rem;
+      color: #999;
+      line-height: 1.8;
+    }
+
+    .tier-tags { margin-top: 0.8rem; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid #1a1a1a;
+      color: #999;
+      margin-right: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag-gold { border-color: #2a2a1a; color: #c8af64; }
+    .tag-green { border-color: #1a2a1a; color: #4a8a4a; }
+    .tag-blue { border-color: #1a1a2a; color: #6a8ab0; }
+
+    /* ── Edge Network ── */
+    .edge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #151515;
+      border: 1px solid #151515;
+      margin-top: 1.4rem;
+    }
+
+    .edge-item {
+      background: #0a0a0a;
+      padding: 1.4rem;
+    }
+
+    .edge-value {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: #4a8a4a;
+      margin-bottom: 0.3rem;
+    }
+
+    .edge-label {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .edge-desc {
+      font-size: 0.65rem;
+      color: #777;
+      margin-top: 0.3rem;
+      line-height: 1.6;
+    }
+
+    /* ── Use Cases ── */
+    .use-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: #151515;
+      border: 1px solid #151515;
+      margin-top: 1.4rem;
+    }
+
+    .use-item {
+      background: #0a0a0a;
+      padding: 1.6rem;
+    }
+
+    .use-name {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #ddd;
+      margin-bottom: 0.5rem;
+    }
+
+    .use-desc {
+      font-size: 0.75rem;
+      color: #999;
+      line-height: 1.8;
+    }
+
+    /* ── Why Sovereign ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #151515;
+      border: 1px solid #151515;
+      margin-top: 1.4rem;
+    }
+
+    .why-item {
+      background: #0a0a0a;
+      padding: 1.4rem;
+    }
+
+    .why-title {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #ddd;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-desc {
+      font-size: 0.68rem;
+      color: #999;
+      line-height: 1.8;
+    }
+
+    /* ── Pricing ── */
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: #151515;
+      border: 1px solid #151515;
+      margin-top: 1.4rem;
+    }
+
+    .price-item {
+      background: #0a0a0a;
+      padding: 1.6rem 1.2rem;
+      text-align: center;
+    }
+
+    .price-tier {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 0.8rem;
+    }
+
+    .price-amount {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: #f0f0f0;
+      margin-bottom: 0.4rem;
+    }
+
+    .price-period {
+      font-size: 0.65rem;
+      color: #777;
+      margin-bottom: 0.8rem;
+    }
+
+    .price-desc {
+      font-size: 0.65rem;
+      color: #888;
+      line-height: 1.7;
+    }
+
+    /* ── CTA ── */
+    .cta { margin-top: 4rem; text-align: center; }
+
+    .cta-btn {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #080808;
+      background: #c8af64;
+      border: none;
+      padding: 0.9rem 2.8rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.4s ease;
+      margin: 0 0.5rem;
+    }
+
+    .cta-btn:hover {
+      background: #d4be78;
+      color: #080808;
+    }
+
+    .cta-btn-outline {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #ccc;
+      background: none;
+      border: 1px solid #333;
+      padding: 0.85rem 2.8rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.4s ease;
+      margin: 0 0.5rem;
+    }
+
+    .cta-btn-outline:hover { color: #fff; border-color: #c8af64; }
+
+    .cta-note {
+      font-size: 0.7rem;
+      color: #777;
+      margin-top: 1.4rem;
+    }
+
+    /* ── Spec Table ── */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.4rem;
+    }
+
+    .spec-table th {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888;
+      text-align: left;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .spec-table td {
+      font-size: 0.78rem;
+      color: #ccc;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #0f0f0f;
+    }
+
+    .spec-table tr:hover td { background: #0c0c0c; }
+
+    .spec-table .num {
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+      color: #c8af64;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid #111;
+      text-align: center;
+      font-size: 0.68rem;
+      color: #666;
+    }
+    .footer a { color: #888; }
+    .footer a:hover { color: #ddd; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .wrapper { padding: 4rem 1.4rem 3rem; }
+      .hero-grid { grid-template-columns: repeat(2, 1fr); }
+      .tier-specs { grid-template-columns: repeat(2, 1fr); }
+      .edge-grid { grid-template-columns: 1fr; }
+      .use-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <header class="header">
+    <p class="firm"><a href="https://swarmandbee.com">Swarm &amp; Bee</a></p>
+    <h1 class="hero-title">Sovereign Compute<br><span class="gold">Infrastructure</span></h1>
+    <p class="hero-sub">324 GPUs. 18 terabytes of VRAM. 100 edge nodes. Single-tenant, sovereign compute for AI training, fine-tuning, and inference. Your data never leaves your rack.</p>
+
+    <!-- Hero Numbers -->
+    <div class="hero-grid">
+      <div class="hero-stat">
+        <p class="hero-num">324</p>
+        <p class="hero-label">Total GPUs</p>
+      </div>
+      <div class="hero-stat">
+        <p class="hero-num">18 TB</p>
+        <p class="hero-label">Total VRAM</p>
+      </div>
+      <div class="hero-stat">
+        <p class="hero-num">100</p>
+        <p class="hero-label">Edge Nodes</p>
+      </div>
+      <div class="hero-stat">
+        <p class="hero-num">0</p>
+        <p class="hero-label">Cloud Dependencies</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="rule"></div>
+
+  <!-- Fleet Summary Table -->
+  <section>
+    <p class="section-label">Fleet Composition</p>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>GPU</th>
+          <th>Architecture</th>
+          <th>VRAM</th>
+          <th style="text-align:right">Units</th>
+          <th style="text-align:right">Total VRAM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NVIDIA RTX 6000 Pro</td>
+          <td>Blackwell</td>
+          <td>96 GB</td>
+          <td class="num">128</td>
+          <td class="num">12,288 GB</td>
+        </tr>
+        <tr>
+          <td>NVIDIA RTX 4500</td>
+          <td>Ada Lovelace</td>
+          <td>32 GB</td>
+          <td class="num">48</td>
+          <td class="num">1,536 GB</td>
+        </tr>
+        <tr>
+          <td>NVIDIA RTX 4000</td>
+          <td>Ada Lovelace</td>
+          <td>24 GB</td>
+          <td class="num">48</td>
+          <td class="num">1,152 GB</td>
+        </tr>
+        <tr>
+          <td>BeeMini Edge Nodes</td>
+          <td>CPU (Intel)</td>
+          <td>&mdash;</td>
+          <td class="num">100</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr style="border-top:1px solid #222;">
+          <td style="color:#f0f0f0; font-weight:500;">Total Fleet</td>
+          <td></td>
+          <td></td>
+          <td class="num" style="color:#f0f0f0; font-weight:500;">324 + 100</td>
+          <td class="num" style="color:#f0f0f0; font-weight:500;">14,976 GB</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Tier 1: RTX 6000 Pro -->
+  <section>
+    <p class="section-label">GPU Fleet</p>
+
+    <div class="tier-card">
+      <div class="tier-header">
+        <span class="tier-name">RTX 6000 Pro Blackwell</span>
+        <span class="tier-badge">Tier 1 &mdash; Flagship</span>
+      </div>
+      <div class="tier-body">
+        <div class="tier-specs">
+          <div class="tier-spec">
+            <p class="tier-spec-value">128</p>
+            <p class="tier-spec-label">Units</p>
+          </div>
+          <div class="tier-spec">
+            <p class="tier-spec-value">96 GB</p>
+            <p class="tier-spec-label">VRAM Each</p>
+          </div>
+          <div class="tier-spec">
+            <p class="tier-spec-value">12.3 TB</p>
+            <p class="tier-spec-label">Total VRAM</p>
+          </div>
+          <div class="tier-spec">
+            <p class="tier-spec-value">Blackwell</p>
+            <p class="tier-spec-label">Architecture</p>
+          </div>
+        </div>
+        <p class="tier-desc">The backbone. 96GB VRAM per card runs 70B+ models unquantized. Multi-GPU training for 200B+ parameter models. The same silicon that powers our CoVe verification pipeline &mdash; 235B parameter model verification at production scale.</p>
+        <div class="tier-tags">
+          <span class="tag tag-gold">Flagship</span>
+          <span class="tag">70B+ Unquantized</span>
+          <span class="tag">Multi-GPU Training</span>
+          <span class="tag">Production Inference</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 2: RTX 4500 -->
+    <div class="tier-card">
+      <div class="tier-header">
+        <span class="tier-name">RTX 4500 Ada Lovelace</span>
+        <span class="tier-badge">Tier 2 &mdash; Workhorse</span>
+      </div>
+      <div class="tier-body">
+        <div class="tier-specs">
+          <div class="tier-spec">
+            <p class="tier-spec-value">48</p>
+            <p class="tier-spec-label">Units</p>
+          </div>
+          <div class="tier-spec">
+            <p class="tier-spec-value">32 GB</p>
+            <p class="tier-spec-label">VRAM Each</p>
+          </div>
+          <div class="tier-spec">
+            <p class="tier-spec-value">1.5 TB</p>
+            <p class="tier-spec-label">Total VRAM</p>
+          </div>
+          <div class="tier-spec">
+            <p class="tier-spec-value">Ada</p>
+            <p class="tier-spec-label">Architecture</p>
+          </div>
+        </div>
+        <p class="tier-desc">The workhorse tier. 32GB handles 7B&ndash;13B models at full precision, 34B quantized. Ideal for fine-tuning, LoRA training, batch evaluation, and high-throughput inference. Cost-effective for workloads that don't need 96GB.</p>
+        <div class="tier-tags">
+          <span class="tag tag-blue">Workhorse</span>
+          <span class="tag">7B&ndash;13B Full Precision</span>
+          <span class="tag">LoRA Training</span>
+          <span class="tag">Batch Inference</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 3: RTX 4000 -->
+    <div class="tier-card">
+      <div class="tier-header">
+        <span class="tier-name">RTX 4000 Ada Lovelace</span>
+        <span class="tier-badge">Tier 3 &mdash; Edge GPU</span>
+      </div>
+      <div class="tier-body">
+        <div class="tier-specs">
+          <div class="tier-spec">
+            <p class="tier-spec-value">48</p>
+            <p class="tier-spec-label">Units</p>
+          </div>
+          <div class="tier-spec">
+            <p class="tier-spec-value">24 GB</p>
+            <p class="tier-spec-label">VRAM Each</p>
+          </div>
+          <div class="tier-spec">
+            <p class="tier-spec-value">1.2 TB</p>
+            <p class="tier-spec-label">Total VRAM</p>
+          </div>
+          <div class="tier-spec">
+            <p class="tier-spec-value">Ada</p>
+            <p class="tier-spec-label">Architecture</p>
+          </div>
+        </div>
+        <p class="tier-desc">Edge GPU tier. 24GB runs specialized 7B models at full speed, quantized 13B models, and vision-language pipelines. Low power draw, high density. Perfect for always-on inference, model serving, and edge deployment.</p>
+        <div class="tier-tags">
+          <span class="tag tag-green">Edge GPU</span>
+          <span class="tag">7B Specialist</span>
+          <span class="tag">Vision-Language</span>
+          <span class="tag">Always-On Inference</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Edge Network -->
+  <section>
+    <p class="section-label">Edge Network</p>
+    <div class="edge-grid">
+      <div class="edge-item">
+        <p class="edge-value">100</p>
+        <p class="edge-label">BeeMini Nodes</p>
+        <p class="edge-desc">Ultra-low-power CPU nodes for orchestration, routing, and lightweight inference</p>
+      </div>
+      <div class="edge-item">
+        <p class="edge-value">~6W</p>
+        <p class="edge-label">Per Node</p>
+        <p class="edge-desc">Intel-based, 10Gbps networking, sovereign edge processing at pennies per day</p>
+      </div>
+      <div class="edge-item">
+        <p class="edge-value">24/7</p>
+        <p class="edge-label">Always On</p>
+        <p class="edge-desc">Fleet watchdog, pipeline orchestration, health monitoring, data routing</p>
+      </div>
+    </div>
+    <p style="font-size:0.78rem; color:#999; margin-top:1.4rem; line-height:1.8;">The BeeMini fleet handles everything that doesn't need a GPU &mdash; pipeline orchestration, data staging, CoVe workflow management, fleet health monitoring, and edge inference for small models. Foremen don't need muscle. They need to be everywhere, always on, directing traffic.</p>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Use Cases -->
+  <section>
+    <p class="section-label">What You Can Run</p>
+    <div class="use-grid">
+      <div class="use-item">
+        <p class="use-name">Model Training</p>
+        <p class="use-desc">Full pre-training and continued pre-training on multi-GPU clusters. 96GB per card means no compromise on batch size or sequence length. Train 7B to 200B+ parameter models.</p>
+      </div>
+      <div class="use-item">
+        <p class="use-name">Fine-Tuning</p>
+        <p class="use-desc">LoRA, QLoRA, and full fine-tuning on any open-weight model. Qwen, Llama, Mistral, Gemma, Phi &mdash; bring your base model and your dataset. We return weights.</p>
+      </div>
+      <div class="use-item">
+        <p class="use-name">Production Inference</p>
+        <p class="use-desc">Serve your models at scale with vLLM, TGI, or llama.cpp. Dedicated GPU allocation, no noisy neighbors, predictable latency. API endpoints on your terms.</p>
+      </div>
+      <div class="use-item">
+        <p class="use-name">Sovereign AI</p>
+        <p class="use-desc">For regulated industries &mdash; healthcare, legal, financial services. Your data stays on-premises. No cloud provider has access. Full audit trail. HIPAA-ready architecture.</p>
+      </div>
+      <div class="use-item">
+        <p class="use-name">Batch Processing</p>
+        <p class="use-desc">Large-scale dataset processing, embedding generation, evaluation runs, CoVe verification pipelines. Burst capacity when you need it, return GPUs when you don't.</p>
+      </div>
+      <div class="use-item">
+        <p class="use-name">Edge Deployment</p>
+        <p class="use-desc">Deploy specialized models to edge GPU nodes. Low-latency inference at the point of need. Clinic, office, factory floor &mdash; wherever the last mile is.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Why Sovereign -->
+  <section>
+    <p class="section-label">Why Sovereign</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <p class="why-title">No Cloud Egress</p>
+        <p class="why-desc">Your data never traverses a public cloud. No egress fees. No third-party data processing agreements. No vendor lock-in.</p>
+      </div>
+      <div class="why-item">
+        <p class="why-title">Single Tenant</p>
+        <p class="why-desc">Your GPU is your GPU. No shared resources, no noisy neighbors, no performance variability. Dedicated hardware, dedicated to you.</p>
+      </div>
+      <div class="why-item">
+        <p class="why-title">Predictable Cost</p>
+        <p class="why-desc">Flat monthly pricing. No per-token charges, no surprise bills, no metered bandwidth. Know exactly what you'll pay before you commit.</p>
+      </div>
+      <div class="why-item">
+        <p class="why-title">Data Sovereignty</p>
+        <p class="why-desc">Critical for healthcare, legal, and financial AI. Your training data, your model weights, your inference logs &mdash; all stay on hardware you control.</p>
+      </div>
+      <div class="why-item">
+        <p class="why-title">Full Stack Control</p>
+        <p class="why-desc">Choose your framework, your serving stack, your model. vLLM, TGI, Unsloth, Axolotl &mdash; run whatever you need. Root access available.</p>
+      </div>
+      <div class="why-item">
+        <p class="why-title">Scale on Demand</p>
+        <p class="why-desc">Start with 1 GPU. Scale to 128. Add edge nodes. Build multi-node training clusters. Infrastructure grows with your workload.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Pricing -->
+  <section>
+    <p class="section-label">Pricing</p>
+    <div class="price-grid">
+      <div class="price-item">
+        <p class="price-tier">Inference</p>
+        <p class="price-amount">$49.99</p>
+        <p class="price-period">10 hours</p>
+        <p class="price-desc">Dedicated GPU inference. RTX 6000 Pro 96GB. API access.</p>
+      </div>
+      <div class="price-item">
+        <p class="price-tier">Fine-Tune 7B</p>
+        <p class="price-amount">$299</p>
+        <p class="price-period">per job</p>
+        <p class="price-desc">We fine-tune your 7B model. LoRA + merged weights delivered.</p>
+      </div>
+      <div class="price-item">
+        <p class="price-tier">Fine-Tune 70B</p>
+        <p class="price-amount">$999</p>
+        <p class="price-period">per job</p>
+        <p class="price-desc">Multi-GPU fine-tuning. 70B+ class models. Full precision.</p>
+      </div>
+      <div class="price-item">
+        <p class="price-tier">Dedicated GPU</p>
+        <p class="price-amount">$2,499</p>
+        <p class="price-period">per month</p>
+        <p class="price-desc">RTX 6000 Pro 96GB. Single tenant. 24/7. Cancel anytime.</p>
+      </div>
+    </div>
+    <p style="font-size:0.75rem; color:#888; margin-top:1.4rem; text-align:center;">Custom clusters (4&ndash;128 GPUs) available. <a href="mailto:hello@swarmandbee.com" style="color:#c8af64;">Contact us</a> for enterprise pricing.</p>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <a class="cta-btn" href="mailto:hello@swarmandbee.com?subject=Compute%20Inquiry">Get Started</a>
+    <a class="cta-btn-outline" href="https://data.swarmandbee.com">Platinum Data Store</a>
+    <p class="cta-note">Typically respond within 24 hours &middot; Custom configurations available</p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 <a href="https://swarmandbee.com">Swarm &amp; Bee</a> &middot; <a href="https://data.swarmandbee.com">Platinum Data</a> &middot; <a href="https://huggingface.co/SwarmOS">SwarmOS</a> &middot; <a href="https://data.swarmandbee.com/terms.html">Terms</a> &middot; <a href="https://data.swarmandbee.com/privacy.html">Privacy</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
